@@ -4,7 +4,7 @@
   "description": "Framework for easy data extraction using the puppeteer library",
   "main": "index.js",
   "scripts": {
-    "run": "node index.js",
+    "run": "node src/robots/myApp.js",
     "test": "npm run test"
   },
   "keywords": [

@@ -2,6 +2,7 @@ const {clickElement} = require("../modules/navigation");
 const {extractTable} = require("../modules/extraction");
 const {saveToXlsx} = require("../modules/dataPersistence");
 const {FILES_PATH} = require("../core");
+const {runFramework} = require("../../index");
 
 const URL = 'https://exemplo.com.br';
 
@@ -42,7 +43,18 @@ const getSteps = () => {
     return [step1, step2, step3];
 };
 
-module.exports = {
-    getSteps,
-    URL
-};
+/**
+ * Runs the robot with the provided steps and URL.
+ */
+const run = async () => {
+    const steps = getSteps();
+    await runFramework(steps, URL);
+}
+
+run().then(() => {
+    console.log('Done!')
+    process.exit(0);
+}).catch((error) => {
+    console.error(error);
+    process.exit(1);
+});
